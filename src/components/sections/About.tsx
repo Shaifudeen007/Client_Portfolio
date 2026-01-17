@@ -1,6 +1,7 @@
 import { useParallax } from "@/hooks/useParallax";
 import CountUp from "react-countup";
 import { Briefcase, Users, Code2, Award } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const stats = [
   { icon: Briefcase, value: 300, label: "Trainers Shaped" },
@@ -8,7 +9,6 @@ const stats = [
   { icon: Code2, label: "Versatile. Adaptable. Leadership-Driven." },
   { icon: Award, label: "Credentialed Tech Lead" },
 ];
-
 
 const coreSkills = [
   "Computer Science",
@@ -22,7 +22,16 @@ const coreSkills = [
 ];
 
 const About = () => {
-  const offset = useParallax(0.2);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const offset = useParallax(isMobile ? 0 : 0.2);
 
   return (
     <section
@@ -59,22 +68,22 @@ const About = () => {
           >
             <p>
               I'm A Dedicated Educator And Tech Lead Currently Serving As An
-Assistant Professor At Nandha Engineering College. My Journey In Tech
-Spans Across Multiple Roles - From Being A Technical Trainer To Scrum
-Master And HR Manager.
+              Assistant Professor At Nandha Engineering College. My Journey In Tech
+              Spans Across Multiple Roles - From Being A Technical Trainer To Scrum
+              Master And HR Manager.
             </p>
 
             <p>
-             With A Strong Foundation In Computer Science And An MBA, I Bridge The
-Gap Between Technical Expertise And Business Acumen. I've Helped Improve
-Course Completion Rates By 30% Through Mentorship And Innovative Teaching
-Methodologies.
+              With A Strong Foundation In Computer Science And An MBA, I Bridge The
+              Gap Between Technical Expertise And Business Acumen. I've Helped Improve
+              Course Completion Rates By 30% Through Mentorship And Innovative Teaching
+              Methodologies.
             </p>
 
             <p>
               My Passion Lies In Guiding The Next Generation Of Developers, Instilling
-In Them Not Just Technical Skills But Also Problem-Solving Abilities And
-A Growth Mindset.
+              In Them Not Just Technical Skills But Also Problem-Solving Abilities And
+              A Growth Mindset.
             </p>
           </div>
 
@@ -82,27 +91,32 @@ A Growth Mindset.
           <div className="space-y-10">
 
             {/* STATS */}
-           <div className="grid grid-cols-2 gap-6">
-  {stats.map((stat) => {
-    const Icon = stat.icon;
+            <div className="grid grid-cols-2 gap-6">
+              {stats.map((stat) => {
+                const Icon = stat.icon;
 
-    return (
-      <div key={stat.label} className="stat-box">
-        <Icon className="w-8 h-8 text-primary mb-2" />
+                return (
+                  <div key={stat.label} className="stat-box">
+                    <Icon className="w-8 h-8 text-primary mb-2" />
 
-        {typeof stat.value === "number" ? (
-          <div className="text-3xl font-bold gradient-text">
-            <CountUp end={stat.value} duration={2} />+
-          </div>
-        ) : null}
+                    {typeof stat.value === "number" && (
+                      <div className="text-3xl font-bold gradient-text">
+                        <CountUp
+                          end={stat.value}
+                          duration={2}
+                          enableScrollSpy
+                          scrollSpyOnce
+                        />+
+                      </div>
+                    )}
 
-        <p className="text-sm text-muted-foreground mt-1 text-center">
-          {stat.label}
-        </p>
-      </div>
-    );
-  })}
-</div>
+                    <p className="text-sm text-muted-foreground mt-1 text-center">
+                      {stat.label}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
 
           </div>
         </div>
