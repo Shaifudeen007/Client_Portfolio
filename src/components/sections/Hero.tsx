@@ -9,7 +9,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0">
+    <section className="relative min-h-[90vh] md:min-h-screen flex items-center overflow-hidden pt-24 md:pt-0">
       {/* Background gradient orbs */}
       <div
         className="absolute top-1/4 -left-32 w-64 md:w-96 h-64 md:h-96 rounded-full opacity-20"
@@ -97,16 +97,16 @@ const Hero = () => {
             className="flex-shrink-0 opacity-0 animate-scale-in flex items-center justify-center"
             style={{ animationDelay: "0.5s" }}
           >
-            <div className="relative translate-y-8">
+            <div className="relative md:translate-y-8">
               {/* Glow */}
               <div className="absolute inset-0 rounded-full bg-primary/30 blur-2xl"></div>
 
               {/* Image */}
-              <div className="relative w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary shadow-xl">
+              <div className="relative w-52 h-52 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary shadow-xl">
                 <img
                   src="/ProfilePhoto.jpg"
                   alt="B S Ranjith"
-                  className="w-full h-full object-cover translate-y"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
@@ -118,7 +118,7 @@ const Hero = () => {
       {/* Scroll indicator */}
       <button
         onClick={scrollToAbout}
-        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in cursor-pointer"
+        className="absolute bottom-4 md:bottom-10 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in cursor-pointer"
         style={{ animationDelay: "1.5s" }}
       >
         <ChevronDown className="w-6 h-6 md:w-8 md:h-8 text-primary animate-bounce" />
