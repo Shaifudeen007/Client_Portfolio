@@ -1,11 +1,13 @@
 import CursorGlow from '@/components/CursorGlow';
 import FloatingParticles from '@/components/FloatingParticles';
 import Navigation from '@/components/Navigation';
+
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
 import Experience from '@/components/sections/Experience';
 import Education from '@/components/sections/Education';
 import Awards from '@/components/sections/Awards';
+import Testimonials from '@/components/sections/Testimonials'; // ✅ NEW
 import Quote from '@/components/sections/Quote';
 import Contact from '@/components/sections/Contact';
 
@@ -22,6 +24,10 @@ const Index = () => {
         <Experience />
         <Education />
         <Awards />
+
+        {/* Testimonials Section */}
+        <Testimonials />
+
         <Quote />
         <Contact />
       </main>
